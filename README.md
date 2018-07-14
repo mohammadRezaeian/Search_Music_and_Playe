@@ -1,27 +1,15 @@
-hi
+Hi. This script can search musics and play them for you!
 
-this script can search music 
+All you need is to install MPlayer!
 
-if you need that 
+In Debian base distributions: 
+sudo apt install mplayer
 
-please befor that install mplayer
+In RedHat base distributions (like Fedora):
+sudo dnf install mplayer
 
-if your discturctor is 
-
-debian base : sudo apt install mplayer
-
-red hat base: sudo dnf install mplayer
-
-arch base:
-
+In Arch base distributions: 
 sudo pacman -S mplayer
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-how to use that:
-if you run and need finish
-just use ctrl+c
-
->>>>>>>>>>>>>>>>>>>>>
-
-thanks.
+Exit the program with Ctrl+C :)
+Tnx!
