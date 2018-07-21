@@ -1,27 +1,22 @@
- #!/bin/bash
+#!/bin/bash
 
- echo "Please Select your path "
+echo "Please Select your path "
 
+likedirectory=Y
 
- echo  "if you like search this directory just type y or n"
-
-
- read likedirectory
+read -p "Do you like search this directory? [Y/n] " likedirectory
 
 
 
- if [[ $likedirectory == "Y" ]]
- then
-
-         read PWD
-
+if [[ "$likedirectory" == "N" || "$likedirectory" == "n" ]]; then
+	read -p "enter a directory: " -i "$ROOT/" -e addressdirectory 
+else
+	
          echo "Please enter your name"
 
          read name
 
-         echo "Please Select your type d {directory} f {file}"
-
-         read typelike
+         read -p "Please Select your type d {directory} f {file}" typelike
 
          if [[ $typelike == "d" ]]
 
@@ -37,17 +32,11 @@
  
         find  $PWD -type f -name "*$name*" -exec mplayer {} \;
 
-else
+	else
 
-        echo " your type is not true"
+        	echo " your type is not true"
 
-fi;
- 
-        elif [[ $likedirectory == "n" ]]
-
-then
-        read -p "enter a directory: " -i "$ROOT/" -e addressdirectory
-
+	fi;
 fi
 
         echo "Please enter your name"
