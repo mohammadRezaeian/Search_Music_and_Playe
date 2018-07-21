@@ -10,35 +10,8 @@ read -p "Do you like search this directory? [Y/n] " likedirectory
 
 if [[ "$likedirectory" == "N" || "$likedirectory" == "n" ]]; then
 	read -p "enter a directory: " -i "$ROOT/" -e addressdirectory 
-else
+
 	
-         echo "Please enter your name"
-
-         read name
-
-         read -p "Please Select your type d {directory} f {file}" typelike
-
-         if [[ $typelike == "d" ]]
-
-         then
-
-                 find  $PWD -type d -name  $name
-
-         elif [[ $typelike == "f" ]]
-
-         then
-
-                echo "if your need playe music Please befor install mplayer"
- 
-        find  $PWD -type f -name "*$name*" -exec mplayer {} \;
-
-	else
-
-        	echo " your type is not true"
-
-	fi;
-fi
-
         echo "Please enter your name"
 
 read name
@@ -64,6 +37,29 @@ then
 else
 
         echo " your type is not true"
-fi;
+fi
 
+else
+	
+         echo "Please enter your name"
 
+         read name
+
+         read -p "Please Select your type d {directory} f {file}" typelike
+
+         if [[ $typelike == "d" ]]; then
+
+                 find  $PWD -type d -name  $name
+
+         elif [[ $typelike == "f" ]]; then
+
+                echo "if your need playe music Please befor install mplayer"
+ 
+        find  $PWD -type f -name "*$name*" -exec mplayer {} \;
+
+	else
+
+        	echo " your type is not true"
+
+	fi
+fi
