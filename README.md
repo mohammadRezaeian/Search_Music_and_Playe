@@ -13,3 +13,4 @@ sudo pacman -S mplayer
 
 Exit the program with Ctrl+C :)
 Tnx!
+
