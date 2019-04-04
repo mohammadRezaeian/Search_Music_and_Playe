@@ -1,7 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+function find_check_play()
+{
+  if [[ $liketype == "d" ]]; then
+      find $addressdirectory -type d -iname $name
+  elif [[ $liketype == "f" ]]; then
+      echo "Install the mplayer if you want tp play music after find it"
+      find $addressdirectory -type f -iname "*$name*" -exec mplayer {} \;
+  else
+      echo " your type is not true"
+  fi
+
+}
+
+function input_format()
+{
+      read -p "Please enter the name of music wich you search : " name
+      read -p "Please Select your type d {directory} f {file} : " liketype
+}
 
 echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
-
 echo "Please Select your path "
 
 likedirectory=Y
@@ -14,45 +32,19 @@ if [[ "$likedirectory" == "N" || "$likedirectory" == "n" ]]; then
 
     echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
 
-    read -p "Please enter the name of music wich you search : " name
+    input_format addressdirectory
 
-    read -p "Please Select your type d {directory} f {file} : " liketype
+    find_check_play liketype
+    find_check_play name
 
-    if [[ $liketype == "d" ]]; then
-
-        find $addressdirectory -type d -iname $name
-
-    elif [[ $liketype == "f" ]]; then
-
-        echo "Install the mplayer if you want tp play music after find it"
-
-        find $addressdirectory -type f -iname "*$name*" -exec mplayer {} \;
-
-    else
-
-        echo " your type is not true"
-    fi
     echo "done!"
 #***********************
 else
     echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
 
-    read -p "Please enter the name of music wich you search : " name
+    input_format addressdirectory
 
-    read -p "Please Select your type d {directory} f {file} : " typelike
-
-    if [[ $typelike == "d" ]]; then
-
-        find  $PWD -type d -name  $name
-
-    elif [[ $typelike == "f" ]]; then
-
-        echo "Install the mplayer if you want tp play music after find it"
- 
-        find  $PWD -type f -name "*$name*" -exec mplayer {} \;
-
-        echo " your type is not true"
-
-    fi
+    find_check_play liketype
+    find_check_play name    
     echo "done!"
 fi
