@@ -19,15 +19,8 @@ function input_format()
       read -p "Please Select your type d {directory} f {file} : " liketype
 }
 
-echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
-echo "Please Select your path "
-
-likedirectory=Y
-
-read -p "Do you like search this directory? [Y/n] " likedirectory
-
-#***********************
-if [[ "$likedirectory" == "N" || "$likedirectory" == "n" ]]; then
+function selectNoSearchDirectory()
+{
     read -p "enter a directory: " -i "$ROOT/" -e addressdirectory 
 
     echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
@@ -38,8 +31,10 @@ if [[ "$likedirectory" == "N" || "$likedirectory" == "n" ]]; then
     find_check_play name
 
     echo "done!"
-#***********************
-else
+
+}
+function selectYesSearchDirectory()
+{
     echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
 
     input_format addressdirectory
@@ -47,4 +42,35 @@ else
     find_check_play liketype
     find_check_play name    
     echo "done!"
-fi
+}
+
+echo "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"
+echo "Please Select your path "
+
+likedirectory=Y
+
+read -p "Do you like search this directory? [Y/n] " likedirectory
+
+#***********************
+case $likedirectory in
+
+  N)
+    selectNoSearchDirectory
+    ;;
+
+  n)
+    selectNoSearchDirectory
+    ;;
+
+  y)
+    selectYesSearchDirectory
+    ;;
+
+  Y)
+    selectYesSearchDirectory
+    ;;
+
+  "")
+  selectYesSearchDirectory
+    ;;
+esac
